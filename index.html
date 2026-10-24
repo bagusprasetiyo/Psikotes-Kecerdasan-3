@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Try Out TIU – Tes Intelegensia Umum</title>
+<style>
+:root{--r:#d6001c;--rd:#a80015;--bg:#ffffff;--card:#ffffff;--tx:#1f2430;--soft:#fff1f2;--bd:#e5e7eb;--mu:#6b7280;color-scheme:light;box-sizing:border-box}
+html{scroll-padding-top:80px;-webkit-text-size-adjust:100%}*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--tx);font:16px/1.6 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:#fff;z-index:20}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:21;background:#fff;border-bottom:3px solid var(--r);display:flex;justify-content:space-between;align-items:center;padding:10px 20px;box-shadow:0 2px 8px #0000000d}
+.lg0{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px}.lg0 i{font-style:normal;background:var(--r);color:#fff;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:16px}
+#tm{background:var(--r);color:#fff;padding:6px 16px;border-radius:999px;font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}#tm:empty{display:none}#tm.w{animation:p 1s infinite}@keyframes p{50%{background:var(--rd)}}
+main{max-width:1100px;margin:0 auto;padding:20px 16px 40px}
+.card{background:#fff;border:1px solid var(--bd);border-radius:16px;padding:24px;box-shadow:0 1px 3px #0000000f,0 10px 28px #0000000a}
+.lay{display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start}aside{position:sticky;top:84px}
+@media(max-width:860px){.lay{grid-template-columns:1fr}aside{position:static}.card{padding:18px}}
+.hero{text-align:center;padding:44px 22px;border-top:6px solid var(--r)}.hero h1{margin:8px 0;color:var(--r);font-size:clamp(26px,5vw,36px);line-height:1.2}.hero p{max-width:620px;margin:10px auto}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0}.chip{background:var(--soft);color:var(--rd);border:1px solid #ffd2d7;padding:6px 14px;border-radius:999px;font-weight:600;font-size:14px}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;text-align:left;margin:20px 0}.ct div{background:#fff;border:1px solid var(--bd);border-left:5px solid var(--r);padding:10px 14px;border-radius:10px;font-size:14px}
+.bt{background:var(--r);color:#fff;border:2px solid var(--r);padding:12px 24px;border-radius:12px;font:700 15px inherit;font-family:inherit;cursor:pointer;transition:.15s}.bt:hover{background:var(--rd);border-color:var(--rd)}.bt:disabled{opacity:.35;cursor:default}
+.bt.ghost{background:#fff;color:var(--r)}.bt.ghost:hover{background:var(--soft)}.bt.fl{background:var(--soft);border-style:dashed}.bt.full{width:100%;margin-top:14px}
+.qh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px;flex-wrap:wrap}.tag{background:var(--r);color:#fff;font-size:12px;padding:4px 12px;border-radius:999px;font-weight:700}.qn{font-size:18px}.qn small{color:var(--mu);font-weight:500}
+.bar{height:8px;background:#f1f2f4;border-radius:8px;overflow:hidden}.bar i{display:block;height:100%;background:var(--r);transition:width .3s}.pg{font-size:13px;color:var(--mu);margin:6px 0 18px}
+.qs{font-size:18px;line-height:1.7;margin-bottom:20px;overflow-x:auto}.os{display:grid;gap:12px}.os.f{grid-template-columns:repeat(auto-fit,minmax(92px,1fr))}
+.op{display:flex;gap:14px;align-items:center;padding:13px 16px;border:2px solid var(--bd);border-radius:14px;background:#fff;color:var(--tx);font:inherit;font-size:17px;text-align:left;cursor:pointer;transition:.15s}
+button.op:hover{border-color:var(--r);background:var(--soft)}.op em{font-style:normal;font-weight:800;width:36px;height:36px;border-radius:50%;background:#f1f2f4;color:#374151;display:grid;place-items:center;flex:none;font-size:15px}
+.op.on,.op.key{border-color:var(--r);background:var(--soft);box-shadow:0 0 0 3px #d6001c26}.op.on em,.op.key em{background:var(--r);color:#fff}.op.bad{border-style:dashed;border-color:#9ca3af;background:#fafafa}.mk{margin-left:auto;font-size:12px;font-weight:700;color:var(--r);white-space:nowrap}
+.os.f .op{flex-direction:column;justify-content:center;text-align:center;gap:8px;padding:8px 4px}.os.f .op span{order:-1;line-height:0}.os.f button.op:hover{transform:translateY(-2px)}
+.hint{font-size:12.5px;color:var(--mu);margin:16px 0 0}kbd{background:#f1f2f4;border:1px solid var(--bd);border-bottom-width:2px;border-radius:5px;padding:0 6px;font:600 12px inherit;font-family:inherit}
+.nv{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;margin-top:22px}
+@media(max-width:860px){.nv{position:sticky;bottom:0;background:#fff;padding:12px 0;border-top:1px solid var(--bd);margin-top:20px}.nv .bt{padding:11px 14px;flex:1}}
+aside h3{margin:0 0 12px;color:var(--r);font-size:17px}.gr{display:grid;grid-template-columns:repeat(8,1fr);gap:5px}@media(max-width:860px){.gr{grid-template-columns:repeat(10,1fr)}}
+.gr button{min-width:0;aspect-ratio:1;border:1.5px solid var(--bd);background:#fff;color:var(--tx);border-radius:8px;font:600 11px inherit;font-family:inherit;cursor:pointer;padding:0}.gr button:hover{border-color:var(--r)}
+.gr .an{background:var(--r);color:#fff;border-color:var(--r)}.gr .fg2{outline:2px dashed var(--rd);outline-offset:1px}.gr .cu{box-shadow:0 0 0 3px #d6001c55;transform:scale(1.12);font-weight:800}
+.lg{font-size:12px;color:var(--mu);margin:14px 0 0}.lg i{display:inline-block;width:11px;height:11px;border:1.5px solid var(--bd);border-radius:3px;margin:0 3px 0 8px;vertical-align:-1px}.lg i.an{background:var(--r);border-color:var(--r)}.lg i.fg2{border:2px dashed var(--rd)}
+.md{position:fixed;inset:0;background:#000a;display:grid;place-items:center;z-index:30;padding:20px}.md .card{max-width:420px;text-align:center}
+.sc{overflow-x:auto}.sc svg{min-width:560px;width:100%;height:auto;display:block}
+svg .bx{fill:#fff;stroke:var(--r);stroke-width:2}svg .bx.hl{fill:var(--r)}svg .tx{font:700 13px system-ui;fill:var(--tx)}svg .wh{fill:#fff}svg .ar{stroke:var(--r);stroke-width:2;fill:none}svg .lb{font:600 11px system-ui;fill:var(--r)}
+.fgr{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}.fc{text-align:center}.fc small{display:block;color:var(--r);font-weight:700;font-size:12px;margin-top:3px}
+.fgr svg,.fmx svg,.os.f svg,.eo svg{max-width:100%;height:auto;display:block}svg.hl>rect:first-child{stroke:#d6001c;stroke-width:4}
+.fmx{display:grid;grid-template-columns:repeat(3,88px);gap:8px;justify-content:center;margin:14px 0}
+.mx{display:block;margin:0 auto}.eo{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.eo div{text-align:center;border:2px solid var(--bd);border-radius:10px;padding:4px}.eo div.ok{border-color:var(--r);background:var(--soft)}.eo b{display:block;color:var(--r)}.eo small{display:block;font-size:11px;color:var(--mu)}
+.res{text-align:center;border-top:6px solid var(--r)}.ring{width:170px;height:170px;border-radius:50%;margin:10px auto;display:grid;place-items:center}.ring div{width:134px;height:134px;border-radius:50%;background:#fff;display:grid;place-content:center}.ring b{font-size:44px;color:var(--r);line-height:1}.ring small{color:var(--mu)}
+.st{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0}.st div{background:var(--soft);border-radius:12px;padding:10px 18px;min-width:96px}.st b{display:block;font-size:22px;color:var(--r)}
+.cb{text-align:left;margin:10px 0}.cb span{display:flex;justify-content:space-between;font-size:14px;font-weight:600}.cb i{display:block;height:10px;background:#f1f2f4;border-radius:6px;overflow:hidden}.cb u{display:block;height:100%;background:var(--r)}
+.fl2{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 12px}.fl2 .bt{padding:8px 18px}
+.rv{margin-bottom:18px}.rh{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}.bd{margin-left:auto;font-size:12px;font-weight:700;padding:3px 12px;border-radius:999px;border:1.5px solid var(--r)}.bd.b{background:var(--r);color:#fff}.bd.s{color:var(--r)}.bd.k{border-style:dashed;color:var(--mu);border-color:var(--mu)}
+.ex{margin-top:16px;background:var(--soft);border-left:5px solid var(--r);border-radius:10px;padding:14px 18px}.ex h4{margin:0 0 6px;color:var(--r)}.ex p{margin:8px 0}
+.fq{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;line-height:1.15;margin:0 .2em;font-size:.92em}.fq .n{border-bottom:1.6px solid currentColor;padding:0 .25em}.fq .d{padding:0 .25em}
+.ft{font:700 13px system-ui,sans-serif;color:var(--tx);display:flex;align-items:center;justify-content:center;height:100%;text-align:center;line-height:1.1}.ft.wh2{color:#fff}
+/* ===== ukuran ringkas untuk layar laptop ===== */
+body{font-size:14.5px;line-height:1.5}
+header{padding:6px 18px;border-bottom-width:2px}.lg0{font-size:15px;gap:8px}.lg0 i{width:28px;height:28px;border-radius:8px;font-size:14px}#tm{padding:4px 14px;font-size:14px}
+html{scroll-padding-top:56px}main{max-width:1040px;padding:12px 14px 24px}
+.card{padding:16px 20px;border-radius:12px}.lay{grid-template-columns:1fr 250px;gap:14px}aside{top:62px}aside.card{padding:14px}
+.qh{margin-bottom:8px}.qn{font-size:16px}.tag{font-size:11px;padding:3px 10px}.bar{height:6px}.pg{font-size:12px;margin:4px 0 12px}
+.qs{font-size:16px;line-height:1.55;margin-bottom:14px}
+.os{gap:8px}.op{padding:8px 12px;gap:12px;font-size:15px;border-radius:10px;border-width:1.5px}.op em{width:28px;height:28px;font-size:13px}.mk{font-size:11px}
+.os.f{grid-template-columns:repeat(auto-fit,minmax(78px,1fr))}.os.f .op{padding:6px 4px;gap:6px}
+.fgr svg,.fmx svg,.os.f svg,.eo svg{width:62px;height:62px}.fmx{grid-template-columns:repeat(3,62px);gap:6px;margin:8px 0}.fgr{gap:8px;margin:6px 0}.fc small{font-size:11px}
+.hint{font-size:11.5px;margin:10px 0 0}.nv{margin-top:14px;gap:8px}.bt{padding:8px 18px;font-size:14px;border-radius:10px}.bt.full{margin-top:10px}.fl2 .bt{padding:6px 14px}
+aside h3{font-size:15px;margin-bottom:8px}.gr{gap:4px}.gr button{font-size:10px;border-radius:6px}.lg{font-size:11px;margin-top:10px}
+.hero{padding:28px 18px}.hero h1{font-size:clamp(22px,4vw,28px)}.chips{margin:10px 0}.chip{font-size:13px;padding:4px 12px}.ct{margin:14px 0;gap:8px}.ct div{padding:7px 12px;font-size:13px}
+.rv{margin-bottom:12px}.rh{margin-bottom:8px}.ex{margin-top:10px;padding:10px 14px}.ex p{margin:6px 0}.ex h4{font-size:14px}
+.res{padding:18px}.ring{width:130px;height:130px}.ring div{width:104px;height:104px}.ring b{font-size:34px}.st div{padding:6px 14px;min-width:80px}.st b{font-size:18px}
+.sc svg{min-width:0;max-width:640px;margin:0 auto}.md .card{max-width:380px}
+@media(max-width:860px){.lay{grid-template-columns:1fr}.gr{grid-template-columns:repeat(10,1fr)}.nv{padding:8px 0}}
+</style></head><body>
+<header><div class="lg0"><i>T</i><span>Try Out TIU</span></div><b id="tm"></b></header>
+<main id="app"></main>
+<script>
+let S=Date.now()%1e9;const R=()=>{S|=0;S=S+0x6D2B79F5|0;let t=Math.imul(S^S>>>15,1|S);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const ri=(a,b)=>a+Math.floor(R()*(b-a+1)),pick=a=>a[ri(0,a.length-1)],shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=ri(0,i);[a[i],a[j]]=[a[j],a[i]]}return a};
+const L=i=>String.fromCharCode(65+i),isF=s=>typeof s=='string'&&s.startsWith('<svg'),idr=x=>x.toLocaleString('id-ID'),Q=[];
+const C=(n,k)=>{let r=1;for(let i=1;i<=k;i++)r=r*(n-k+i)/i;return Math.round(r)};
+const FQ=(a,b)=>`<span class="fq"><span class="n">${a}</span><span class="d">${b}</span></span>`,fz=x=>typeof x!='string'||x.startsWith('<svg')?x:x.replace(/(\d+)\/(\d+)/g,(m,a,b)=>FQ(a,b)).replace(/½/g,FQ(1,2));
+function add(c,q,right,wrong,e){const o=shuf([right,...wrong]).map(fz);Q.push({c,q:fz(q),o,a:o.indexOf(fz(right)),e:fz(e)})}
+const near=(v,s,f=x=>x)=>{const t=new Set([v]);let k=0;while(t.size<5){k++;[1,-1].forEach(m=>{const x=v+m*s*k;if(x>0&&t.size<5)t.add(x)})}return[...t].slice(1).map(f)};
+function row(it,lb,w=54,g=34){const n=it.length,W=n*(w+g)-g+10;let s=`<div class="sc"><svg viewBox="0 0 ${W} 80" style="min-width:${Math.min(W,700)}px">`;
+it.forEach((t,i)=>{const x=5+i*(w+g),h=i==n-1;s+=`<rect x="${x}" y="18" width="${w}" height="44" rx="8" class="bx${h?' hl':''}"/><foreignObject x="${x}" y="18" width="${w}" height="44"><div class="ft${h?' wh2':''}">${t}</div></foreignObject>`;
+if(i<n-1)s+=`<path d="M${x+w+4} 40h${g-12}m-5-4l5 4l-5 4" class="ar"/><text x="${x+w+g/2}" y="30" text-anchor="middle" class="lb">${lb[i]||''}</text>`});return s+'</svg></div>'}
+/* ===== 1. ANALOGI VERBAL (10) ===== */
+[['Hakim','Palu','Dirigen','Tongkat','Piano|Orkestra|Not balok|Panggung','Palu adalah alat khas profesi hakim; tongkat (baton) adalah alat khas dirigen. Piano dan orkestra bukan alat pribadi dirigen.'],
+['Hemat','Boros','Tekun','Malas','Rajin|Ulet|Gigih|Giat','Hubungan <b>antonim</b>. Lawan kata tekun adalah malas; keempat pilihan lain justru bersinonim dengan tekun.'],
+['Termometer','Suhu','Anemometer','Kecepatan angin','Arah mata angin|Curah hujan|Tekanan udara|Cuaca','Alat ukur dan besaran yang diukurnya. Anemometer mengukur kecepatan angin (arah angin diukur dengan wind vane, tekanan udara dengan barometer).'],
+['Berudu','Katak','Ulat','Kupu-kupu','Kepompong|Belalang|Lebah|Telur','Tahap muda → bentuk dewasa (akhir metamorfosis). Kepompong hanyalah tahap tengah, bukan bentuk akhir.'],
+['Prolog','Epilog','Pembukaan','Penutup','Pendahuluan|Isi|Judul|Daftar isi','Hubungan <b>antonim posisional</b>: bagian awal lawan bagian akhir.'],
+['Bendungan','Banjir','Vaksin','Wabah','Dokter|Suntikan|Obat|Kuman','Hubungan <b>fungsi pencegahan</b>: bendungan mencegah banjir, vaksin mencegah wabah penyakit. Obat berfungsi menyembuhkan, bukan mencegah.'],
+['Draf','Naskah','Tunas','Pohon','Akar|Daun|Hutan|Bunga','Hubungan <b>tahap awal → hasil akhir</b>: draf disempurnakan menjadi naskah, tunas tumbuh menjadi pohon.'],
+['Hepatitis','Hati','Nefritis','Ginjal','Lambung|Paru-paru|Jantung|Otak','Akhiran <i>-itis</i> berarti peradangan. Hepatitis = radang hati, nefritis = radang ginjal.'],
+['Dokter bedah','Skalpel','Pematung','Pahat','Batu|Patung|Galeri|Seniman','Hubungan <b>profesi – alat utama</b>. Batu dan patung adalah bahan/hasil, bukan alat.'],
+['Rekonsiliasi','Konflik','Restorasi','Kerusakan','Bangunan|Pemugaran|Sejarah|Cagar budaya','Hubungan <b>tujuan penyelesaian</b>: rekonsiliasi mengakhiri konflik, restorasi memperbaiki kerusakan.']
+].forEach(([a,b,c,r,w,e])=>add('Analogi Verbal',`Tentukan padanan hubungan kata berikut:<br><b>${a} : ${b} = ${c} : …</b>`,r,w.split('|'),row([a,b,c,r],['berelasi','≙','berelasi'],120,44)+`<p>${e}</p><p>Jawaban: <b>${r}</b></p>`));
+/* ===== 2. LOGIKA (12) ===== */
+[['Semua penulis adalah pembaca.<br>Sebagian pembaca adalah pemusik.','Tidak dapat ditarik kesimpulan pasti tentang penulis dan pemusik','Sebagian penulis adalah pemusik|Semua pemusik adalah penulis|Sebagian pemusik bukan pembaca|Tidak ada penulis yang pemusik','Himpunan penulis berada di dalam pembaca, tetapi “sebagian pembaca yang pemusik” bisa saja berada di luar irisan penulis. Jadi hubungan penulis–pemusik tidak pasti.',['Penulis','Pembaca','Pemusik'],['⊂ semua','∩ sebagian']],
+['Tidak ada mahasiswa yang malas.<br>Sebagian orang malas adalah atlet.','Sebagian atlet bukan mahasiswa','Semua atlet adalah mahasiswa|Sebagian atlet adalah mahasiswa|Tidak ada atlet yang malas|Semua mahasiswa adalah atlet','Atlet yang malas pasti bukan mahasiswa (mahasiswa tidak ada yang malas). Karena ada atlet yang malas, maka sebagian atlet bukan mahasiswa.',['Mahasiswa','Orang malas','Atlet'],['saling lepas','∩ sebagian']],
+['Jika hujan deras maka jalan banjir.<br>Jika jalan banjir maka lalu lintas macet.<br>Hari ini lalu lintas tidak macet.','Hari ini tidak hujan deras','Jalan banjir tetapi hujan tidak deras|Hujan deras tetapi jalan tidak banjir|Hari ini hujan deras|Hari ini jalan banjir','Gunakan kontraposisi berantai: tidak macet ⇒ tidak banjir ⇒ tidak hujan deras.',['Tidak macet','Tidak banjir','Tidak hujan deras'],['kontraposisi','kontraposisi']],
+['Semua anggota tim juara berlatih setiap hari.<br>Sebagian anggota klub tidak berlatih setiap hari.','Sebagian anggota klub bukan anggota tim juara','Semua anggota klub adalah tim juara|Sebagian anggota tim juara bukan anggota klub|Tidak ada anggota klub yang berlatih|Semua anggota klub tidak berlatih setiap hari','Anggota tim juara pasti berlatih tiap hari. Anggota klub yang tidak berlatih tiap hari pasti bukan anggota tim juara.',['Klub (sebagian)','Tidak berlatih','Bukan tim juara'],['→','kontraposisi']],
+['Beberapa pejabat jujur.<br>Semua yang jujur dipercaya rakyat.<br>Tidak ada yang dipercaya rakyat yang korup.','Beberapa pejabat tidak korup','Semua pejabat jujur|Beberapa pejabat korup|Semua pejabat dipercaya rakyat|Tidak ada pejabat yang jujur','Pejabat jujur ⇒ dipercaya rakyat ⇒ tidak korup. Karena ada pejabat yang jujur, ada pejabat yang tidak korup.',['Pejabat (sebagian)','Jujur','Dipercaya','Tidak korup'],['⊂','⊂','⇒']],
+['Jika Dina belajar maka ia lulus.<br>Jika Dina lulus maka ia mendapat beasiswa.<br>Dina tidak mendapat beasiswa.','Dina tidak belajar dan tidak lulus','Dina belajar tetapi tidak lulus|Dina lulus tetapi tidak belajar|Dina belajar|Dina lulus','Rantai: belajar → lulus → beasiswa. Kontraposisinya: tidak beasiswa → tidak lulus → tidak belajar.',['Tidak beasiswa','Tidak lulus','Tidak belajar'],['kontraposisi','kontraposisi']],
+['Semua A adalah B.<br>Tidak ada B yang C.<br>Sebagian D adalah C.','Sebagian D bukan A','Semua D adalah A|Sebagian D adalah A|Tidak ada D yang B|Semua C adalah D','A ⊂ B dan B tidak beririsan dengan C, maka A tidak beririsan dengan C. D yang C pasti bukan A.',['A ⊂ B','B ∩ C = ∅','D ∩ C ≠ ∅','Sebagian D bukan A'],['+','+','⇒']],
+['Pernyataan: “Jika harga BBM naik maka harga sembako naik.”<br>Pernyataan yang <b>ekuivalen</b> dengan pernyataan tersebut adalah …','Jika harga sembako tidak naik maka harga BBM tidak naik','Jika harga sembako naik maka harga BBM naik|Jika harga BBM tidak naik maka harga sembako tidak naik|Harga BBM naik dan harga sembako tidak naik|Harga BBM tidak naik atau harga sembako tidak naik','p → q ekuivalen dengan ~q → ~p (kontraposisi). Konvers dan invers tidak ekuivalen.',['p → q','~q → ~p'],['ekuivalen']]
+].forEach(([p,r,w,e,it,lb])=>add('Logika Silogisme',`<b>Premis:</b><br>${p}<br><br><b>Kesimpulan yang paling tepat adalah …</b>`.replace('<br><br><b>Kesimpulan yang paling tepat adalah …</b>',p.includes('<b>ekuivalen')?'':'<br><br><b>Kesimpulan yang paling tepat adalah …</b>'),r,w.split('|'),row(it,lb,130,60)+`<p>${e}</p><p>Jawaban: <b>${r}</b></p>`));
+for(let i=0;i<4;i++){const n=shuf(['Arman','Bayu','Cinta','Dewi','Eko','Fajar']).slice(0,5),k=ri(1,3),t=shuf([0,1,2,3].map(j=>R()<.5?`${n[j]} lebih tinggi daripada ${n[j+1]}`:`${n[j+1]} lebih pendek daripada ${n[j]}`));
+add('Logika Urutan',`Lima orang diukur tinggi badannya dengan hasil:<br>${t.map(x=>'• '+x).join('<br>')}<br><br><b>Siapakah yang tingginya menempati urutan ke-${k+1} dari yang tertinggi?</b>`,n[k],n.filter(x=>x!==n[k]),row(n,['>','>','>','>'],70,30)+`<p>Susun semua pernyataan menjadi satu rantai (kalimat “lebih pendek” dibalik menjadi “lebih tinggi”): ${n.join(' > ')}. Urutan ke-${k+1} dari yang tertinggi adalah <b>${n[k]}</b>.</p>`)}
+/* ===== 3. DERET (28) ===== */
+const SER=[
+()=>{const s=[ri(2,6),ri(3,9)];while(s.length<8)s.push(s.at(-1)+s.at(-2));return[s,s.slice(0,7).map((x,i)=>i?'+'+s[i-1]:''),'Setiap suku adalah jumlah dua suku sebelumnya (pola Fibonacci).']},
+()=>{const a=ri(2,9),b=ri(40,60),d=ri(2,5),e=ri(3,7),s=[];for(let i=0;i<8;i++)s.push(i%2?b-e*(i-1)/2:a+d*i/2);return[s,[],`Dua pola bersilang. Suku ganjil (ke-1, 3, 5, 7) naik +${d}; suku genap (ke-2, 4, 6, 8) turun −${e}. Suku ke-8 termasuk deret genap.`]},
+()=>{const d=ri(2,5),k=ri(1,3),s=[ri(1,9)];for(let i=0;i<7;i++)s.push(s[i]+d+k*i);return[s,s.slice(0,7).map((x,i)=>'+'+(d+k*i)),`Selisih antarsuku bertambah ${k} setiap langkah (${d}, ${d+k}, ${d+2*k}, …) – barisan bertingkat dua.`]},
+()=>{const m=ri(2,3),c=pick([-2,-1,1,2,3,4]),s=[ri(2,4)];for(let i=0;i<7;i++)s.push(s[i]*m+c);return[s,s.slice(0,7).map(()=>'×'+m+(c>0?'+':'−')+Math.abs(c)),`Suku berikutnya = suku sebelumnya × ${m} ${c>0?'+':'−'} ${Math.abs(c)}.`]},
+()=>{const c=pick([-3,-2,2,3,5]),s=[1,2,3,4,5,6,7,8].map(n=>n**3+c);return[s,s.slice(0,7).map((x,i)=>'+'+(s[i+1]-x)),`Suku ke-n = n³ ${c>0?'+':'−'} ${Math.abs(c)}. Suku-sukunya adalah bilangan pangkat tiga (1, 8, 27, 64, …) ${c>0?'ditambah':'dikurangi'} ${Math.abs(c)}.`]},
+()=>{const a=ri(2,6),s=[ri(2,5)];for(let i=0;i<7;i++)s.push(i%2?s[i]+a:s[i]*2);return[s,s.slice(0,7).map((x,i)=>i%2?'+'+a:'×2'),`Operasi bergantian: ×2, +${a}, ×2, +${a}, …`]},
+()=>{const s=[ri(3,8)];for(let i=0;i<7;i++)s.push(2*s[i]-(i+1));return[s,s.slice(0,7).map((x,i)=>'×2−'+(i+1)),'Suku berikutnya = 2 × suku sebelumnya − nomor langkah (1, 2, 3, …).']},
+()=>{const a=ri(2,4),b=ri(3,6),s=[ri(6,12)];for(let i=0;i<7;i++)s.push(s[i]+(i%2?-a:b));return[s,s.slice(0,7).map((x,i)=>i%2?'−'+a:'+'+b),`Deret huruf dengan loncatan bergantian +${b} dan −${a} (alfabet melingkar: setelah Z kembali ke A).`,1]}];
+for(let i=0;i<28;i++){const[s,lb,rule,Lt]=SER[i%8](),f=x=>Lt?String.fromCharCode(65+(((x-1)%26)+26)%26):x,v=s[7];
+add('Deret Angka & Huruf',`Lanjutkan pola berikut:<br><b>${s.slice(0,7).map(f).join(', ')}, … ?</b>`,f(v),near(v,Lt?1:ri(1,4),f),row(s.map(f),lb)+`<p>${rule}</p><p>Jadi suku berikutnya adalah <b>${f(v)}</b>.</p>`)}
+/* ===== 4. HITUNGAN (22) ===== */
+const AR=[
+()=>{const P=ri(4,20)*10000,p=pick([20,25,40,50]),q=pick([10,20,30]),x=P*(100+p)/100,f=x*(100-q)/100;return[`Harga suatu barang Rp${idr(P)} dinaikkan ${p}%, kemudian diturunkan ${q}%. Harga akhir barang tersebut adalah … (rupiah)`,f,P/10,['Rp'+idr(P),'Rp'+idr(x),'Rp'+idr(f)],['×'+(100+p)+'%','×'+(100-q)+'%'],`Kenaikan ${p}% membuat harga menjadi ${100+p}% dari harga awal. Penurunan ${q}% dihitung dari <b>harga yang sudah naik</b>, bukan dari harga awal (jebakan: mengurangkan ${p}−${q} langsung).`,idr]},
+()=>{const d=ri(10,20),m=ri(2,4),t=ri(1,3),v1=d*m,v2=d*(m+1);return[`Motor A berangkat dari kota K dengan kecepatan ${v1} km/jam. ${t} jam kemudian motor B menyusul dari kota yang sama dengan kecepatan ${v2} km/jam. B akan menyusul A setelah … jam sejak B berangkat.`,m*t,1,[`Jarak A: ${v1*t} km`,`Selisih: ${d} km/jam`,`Waktu: ${m*t} jam`],['÷','='],`Saat B berangkat, A sudah menempuh ${v1} × ${t} = ${v1*t} km. B mendekat ${d} km setiap jam (${v2} − ${v1}), sehingga waktu menyusul = ${v1*t} ÷ ${d} = ${m*t} jam.`]},
+()=>{const[x,y]=pick([[12,24],[10,15],[20,30],[30,20],[18,9]]),T=x*y/(x+y),a=x/2+T/2;return[`A dapat menyelesaikan suatu pekerjaan dalam ${x} hari dan B dalam ${y} hari. A bekerja sendiri selama ${x/2} hari, kemudian dilanjutkan bersama B sampai selesai. Total waktu pengerjaan adalah … hari.`,a,1,[`A sendiri: ${x/2} hari`,'Sisa: ½ pekerjaan',`Berdua: ${T} hr / 1 pek.`,`½ → ${T/2} hari`,`Total: ${a} hari`],['=','','→','+'],`A sendiri ${x/2} hari menyelesaikan ½ pekerjaan. Kecepatan berdua = 1/${x} + 1/${y} = 1/${T} per hari, sehingga sisa ½ pekerjaan butuh ${T/2} hari. Total = ${x/2} + ${T/2} = ${a} hari.`]},
+()=>{const s=ri(3,9),m=ri(4,7),n=s*(m-2);return[`Umur ayah sekarang ${m} kali umur anaknya. ${n} tahun lagi, umur ayah menjadi 2 kali umur anaknya. Umur ayah sekarang adalah … tahun.`,m*s,2,[`Anak = a, Ayah = ${m}a`,`${m}a+${n} = 2(a+${n})`,`${m-2}a = ${n}`,`a = ${s}`,`Ayah = ${m*s}`],['','','','×'+m],`Misal umur anak a. Persamaan: ${m}a + ${n} = 2(a + ${n}) ⇒ ${m-2}a = ${n} ⇒ a = ${s}. Umur ayah = ${m} × ${s} = ${m*s} tahun.`]},
+()=>{const a=pick([10,15,20,25,30]),b=pick([35,40,45,50,55,60]),v=(2*a+3*b)/5;return[`Larutan garam kadar ${a}% sebanyak 2 liter dicampur dengan larutan garam kadar ${b}% sebanyak 3 liter. Kadar garam campuran adalah … %`,v,2,[`Garam I: ${2*a}/100 L`,`Garam II: ${3*b}/100 L`,`Total: ${2*a+3*b}/100 L`,`Kadar = ${v}%`],['+','=','÷ 5 L'],`Kadar campuran = (2×${a} + 3×${b}) ÷ (2+3) = ${2*a+3*b} ÷ 5 = ${v}% (rata-rata tertimbang).`]},
+()=>{const n=ri(8,15),m=ri(70,80),d=ri(1,3),v=m+(n+1)*d;return[`Rata-rata nilai ${n} siswa adalah ${m}. Setelah seorang siswa baru bergabung, rata-rata nilai seluruh siswa menjadi ${m+d}. Nilai siswa baru tersebut adalah …`,v,ri(2,5),[`Jumlah awal: ${n*m}`,`Jumlah baru: ${(n+1)*(m+d)}`,`Siswa baru: ${v}`],['→','selisih'],`Jumlah nilai awal = ${n}×${m} = ${n*m}. Jumlah nilai setelah ${n+1} siswa = ${n+1}×${m+d} = ${(n+1)*(m+d)}. Nilai siswa baru = selisihnya = ${v}.`]},
+()=>{const a=ri(5,7),b=ri(4,6),v=C(a,3)*C(b,2);return[`Dari ${a} pria dan ${b} wanita akan dibentuk tim beranggotakan 5 orang yang terdiri dari 3 pria dan 2 wanita. Banyak cara membentuk tim adalah …`,v,10,[`C(${a},3) = ${C(a,3)}`,`C(${b},2) = ${C(b,2)}`,`${v} cara`],['×','='],`Pria: C(${a},3) = ${C(a,3)}. Wanita: C(${b},2) = ${C(b,2)}. Karena kedua pilihan terjadi bersamaan, gunakan aturan perkalian: ${C(a,3)} × ${C(b,2)} = ${v}.`]},
+()=>{const k=ri(2,8);return[`Sebuah tangki terisi 3/5 bagian. Setelah ditambah ${3*k} liter, tangki terisi 3/4 bagian. Kapasitas tangki adalah … liter.`,20*k,k,['3/4 − 3/5 = 3/20',`3/20 bagian = ${3*k} L`,`1/20 bagian = ${k} L`,`Penuh = ${20*k} L`],['→','÷3','×20'],`Tambahan ${3*k} L setara 3/4 − 3/5 = 3/20 kapasitas. Maka 1/20 kapasitas = ${k} L dan kapasitas penuh = 20 × ${k} = ${20*k} L.`]}];
+for(let i=0;i<22;i++){const[q,v,s,it,lb,t,f=x=>x]=AR[i%8]();add('Hitungan & Cerita',q,f(v),near(v,s,f),row(it,lb,160,34)+`<p>${t}</p><p>Jawaban: <b>${f(v)}</b></p>`)}
+/* ===== 5. FIGURAL (28) – gambar gumpalan hitam (blob) ===== */
+const FB='#161616',TP=2*Math.PI,DG=Math.PI/180,SL=[[-22,-22],[0,-22],[22,-22],[-22,0],[0,0],[22,0],[-22,22],[0,22],[22,22]];
+const RS=f=>Array.from({length:72},(_,j)=>f(j*5*DG)),md=(a,b)=>a.reduce((s,x,i)=>s+Math.abs(x-b[i]),0)/a.length;
+function goodB(f){const rs=RS(f);let a=9,m=9;for(let k=6;k<=66;k++)a=Math.min(a,md(rs,rs.map((_,j)=>rs[(j-k+72)%72])));for(let k=0;k<72;k++)m=Math.min(m,md(rs,rs.map((_,j)=>rs[((36-j+k)%72+72)%72])));return a>.07&&m>.07}
+function mkBlob(){let f;for(let n=0;n<500;n++){const b=[2,3,4,5,6].map(k=>({k,a:[.3,.24,.17,.11,.07][k-2]*(.55+R()*.6),p:R()*TP}));f=t=>1+b.reduce((s,c)=>s+c.a*Math.cos(c.k*t+c.p),0);const rs=RS(f);if(Math.max(...rs)<1.8&&Math.min(...rs)>.38&&goodB(f))return f}return f}
+const mo=(P,Q,t)=>th=>Math.max(.3,Math.min(1.7,(1-t)*P(th)+t*Q(th)));
+/* tanda tangan numerik tiap gambar: dipakai agar semua pilihan jawaban benar-benar berbeda */
+const sg=d=>{if(d.pts){const v=Array(9).fill(0);d.pts.forEach(i=>v[i]=1);return v}
+ return Array.from({length:72},(_,j)=>{const t=j*5*DG-(d.rot||0)*DG,p=d.m?Math.PI-t:t;return(d.s||1)*d.f(p)+(d.inv?3:0)})};
+const okd=(ds,th)=>{const g=ds.map(sg);for(let i=0;i<g.length;i++)for(let j=i+1;j<g.length;j++)if(md(g[i],g[j])<th)return false;return true};
+const gen=(fn,th=.07)=>{let r;for(let i=0;i<300;i++){r=fn();if(r&&okd(r.ds,th))return r}return r};
+const bpath=f=>{let s='';for(let i=0;i<56;i++){const t=i/56*TP,r=15*f(t);s+=(i?'L':'M')+(r*Math.cos(t)).toFixed(1)+' '+(r*Math.sin(t)).toFixed(1)}return s+'Z'};
+const BG=d=>{const fl=d.inv?'#fff':FB,p=bpath(d.f);
+ if(d.pts)return d.pts.map(i=>`<path d="${p}" transform="translate(${SL[i][0]} ${SL[i][1]}) scale(.42)" fill="${fl}"/>`).join('');
+ const s=d.s||1;return`<path d="${p}" transform="rotate(${d.rot||0}) scale(${d.m?-s:s} ${s})" fill="${fl}"/>`};
+const bx=(g,inv,cls)=>`<svg viewBox="-40 -40 80 80" width="88" height="88"${cls?` class="${cls}"`:''}><rect x="-38" y="-38" width="76" height="76" rx="3" fill="${inv?FB:'#fff'}" stroke="#cfcfcf" stroke-width="2"/>${g}</svg>`;
+const fr=(d,cls)=>bx(BG(d),d.inv,cls),bq=()=>bx('<text y="11" text-anchor="middle" font-size="32" font-weight="600" fill="#444" font-family="system-ui,sans-serif">?</text>',0);
+const qs=a=>`<div class="fgr">${a.map(d=>fr(d)).join('')}${bq()}</div>`;
+const es=(a,cap)=>`<div class="fgr">${a.map((d,i)=>`<div class="fc">${fr(d,i==a.length-1?'hl':'')}<small>${cap[i]||'&nbsp;'}</small></div>`).join('')}</div>`;
+const fadd=(q,ds,e)=>add('Figural',q,fr(ds[0]),ds.slice(1).map(d=>fr(d)),e);
+let cA=0,cF=0;
+const FG=[
+/* A. Deret putaran (+ pembalikan warna bergantian) */
+()=>{const v=cA++%2,f=mkBlob();
+ const r=gen(()=>{const s=pick([40,60,72,90,120,-40,-60,-72,-90,-120]),r0=ri(0,359),X=i=>({f,rot:r0+i*s,inv:v&&i%2?1:0}),a=X(4);
+  return{s,X,ds:[a,{...X(3),inv:a.inv},{...X(5),inv:a.inv},{...a,m:1},v?{...a,inv:1-a.inv}:{...a,rot:r0-4*s}]}});
+ const{s,X}=r,sh=[0,1,2,3].map(X),as=Math.abs(s),ar=s>0?'↻':'↺';
+ fadd(`<b>Deret gambar.</b> Perhatikan perubahan pada setiap langkah. Gambar manakah yang melengkapi deret (menggantikan tanda tanya)?`+qs(sh),r.ds,
+  es([...sh,X(4)],['Awal',...[1,2,3].map(()=>ar+as+'°'),ar+as+'°'])+`<p>Setiap langkah gambar berputar <b>${as}° ${s>0?'searah':'berlawanan arah'} jarum jam</b>${v?' dan <b>warnanya dibalik</b> (hitam ↔ putih) secara bergantian':''}. Dari gambar ke-4, satu langkah lagi menghasilkan gambar pada kotak yang disorot.</p><p>Pilihan lain keliru: tidak berputar (sama dengan gambar ke-4), berputar dua langkah, dicerminkan, ${v?'atau warnanya tidak berganti':'atau berputar ke arah sebaliknya'}.</p>`)},
+/* B. Perubahan bentuk bertahap (morphing) */
+()=>{const r=gen(()=>{const A=mkBlob();let B,n=0;do{B=mkBlob()}while(md(RS(A),RS(B))<.24&&++n<60);
+  const st=pick([.3,.34]),M=(t,x)=>({f:mo(A,B,t),...x}),a=M(3*st);return{st,M,ds:[a,M(2*st),M(4.4*st),M(3*st,{rot:60}),M(3*st,{m:1})]}},.055);
+ const{st,M}=r,sh=[0,1,2].map(i=>M(i*st)),pc=i=>Math.round(i*st*100)+'%';
+ fadd(`<b>Perubahan bentuk.</b> Sebuah gambar berubah bentuk secara bertahap. Gambar manakah yang menggantikan tanda tanya?`+qs(sh),r.ds,
+  es([...sh,M(3*st)],['0%',pc(1),pc(2),pc(3)])+`<p>Bentuk berubah <b>sedikit demi sedikit dengan laju tetap</b> (±${Math.round(st*100)}% tiap langkah) menuju sebuah bentuk lain, tanpa diputar atau dicerminkan. Gambar ke-4 berada tepat satu langkah setelah gambar ke-3.</p><p>Pilihan lain keliru: kembali ke bentuk sebelumnya, berubah terlalu jauh, diputar, atau dicerminkan.</p>`)},
+/* C. Cermin lalu putar */
+()=>{const f=mkBlob();
+ const r=gen(()=>{const s=pick([30,45,60,90,-30,-45,-60,-90]),r0=ri(0,359),S=[{f,rot:r0,m:0}];for(let i=0;i<4;i++){const d=S[i];S.push({f,rot:-d.rot+s,m:1-d.m})}const a=S[4],p=S[3];
+  return{s,S,ds:[a,{f,rot:-p.rot,m:1-p.m},{f,rot:p.rot+s,m:p.m},{f,rot:a.rot,m:p.m},{f,rot:-p.rot-s,m:1-p.m}]}});
+ const{s,S}=r,as=Math.abs(s),ar=s>0?'↻':'↺';
+ fadd(`<b>Cermin &amp; putar.</b> Setiap langkah melibatkan <i>dua</i> perubahan sekaligus. Gambar manakah yang melengkapi deret?`+qs(S.slice(0,4)),r.ds,
+  es(S,['Awal',...[1,2,3,4].map(()=>'⇆ '+ar+as+'°')])+`<p>Setiap langkah: gambar <b>dicerminkan kiri–kanan</b>, kemudian <b>diputar ${as}° ${s>0?'searah':'berlawanan arah'} jarum jam</b>. Terapkan kedua perubahan itu pada gambar ke-4.</p><p>Pilihan lain keliru karena hanya dicerminkan, hanya diputar, tidak dicerminkan, atau diputar ke arah yang salah.</p>`)},
+/* D. Ukuran berubah + putaran */
+()=>{const f=mkBlob(),gw=R()<.5,d=.18,s0=gw?.4:1.12,sc=i=>+(s0+(gw?1:-1)*d*i).toFixed(2);
+ const r=gen(()=>{const rho=pick([40,60,90,-40,-60,-90]),r0=ri(0,359),X=i=>({f,rot:r0+i*rho,s:sc(i)}),a=X(4),ov=+Math.max(.25,Math.min(1.4,a.s+(gw?1:-1)*d*1.5)).toFixed(2);
+  return{rho,X,ds:[a,{...a,s:X(3).s},{...a,rot:X(3).rot},{...a,s:ov},{...a,m:1}]}});
+ const{rho,X}=r,sh=[0,1,2,3].map(X),ar=rho>0?'↻':'↺';
+ fadd(`<b>Ukuran &amp; putaran.</b> Gambar berubah ukuran sekaligus berputar pada tiap langkah. Pilih gambar yang melengkapi deret!`+qs(sh),r.ds,
+  es([...sh,X(4)],['Awal',...[1,2,3,4].map(()=>(gw?'⬆ ':'⬇ ')+ar+Math.abs(rho)+'°')])+`<p>Setiap langkah gambar <b>${gw?'membesar':'mengecil'} dengan selisih ukuran tetap</b> dan <b>berputar ${Math.abs(rho)}° ${rho>0?'searah':'berlawanan arah'} jarum jam</b>.</p><p>Pilihan lain keliru: ukuran tidak berubah, tidak berputar, ukuran ${gw?'terlalu besar':'terlalu kecil'}, atau dicerminkan.</p>`)},
+/* E. Penambahan gambar mengikuti posisi tertentu */
+()=>{const f=mkBlob(),ring=[0,1,2,5,8,7,6,3],c0=ri(1,2),dir=pick([1,-1]),off=ri(0,7),sq=Array.from({length:8},(_,i)=>ring[((off+dir*i)%8+8)%8]),P=n=>({f,pts:sq.slice(0,n)}),n4=c0+3;
+ const ds=[P(n4+1),P(n4),P(n4+2),{f,pts:[...sq.slice(0,n4),sq[n4+2]]},{f,pts:[...sq.slice(0,n4-1),4,sq[n4]]}],sh=[0,1,2,3].map(i=>P(c0+i));
+ fadd(`<b>Penambahan gambar.</b> Perhatikan jumlah <i>dan</i> posisi gambar kecil pada tiap langkah. Gambar manakah yang melengkapi deret?`+qs(sh),ds,
+  es([...sh,P(n4+1)],[1,2,3,4,5].map(i=>(c0+i-1)+' gambar'))+`<p>Setiap langkah <b>bertambah satu gambar baru</b>, sedangkan gambar lama tidak berpindah. Gambar baru selalu muncul pada posisi berikutnya di sepanjang tepi kotak, <b>${dir>0?'searah':'berlawanan arah'} jarum jam</b>. Jadi pada langkah ke-5 terdapat ${n4+1} gambar kecil.</p><p>Pilihan lain keliru karena jumlahnya kurang atau lebih, atau ada gambar yang berada di posisi yang salah.</p>`)},
+/* F. Matriks 3×3 */
+()=>{const v=cF++%2;
+ const r=gen(()=>{const Sh=[mkBlob(),mkBlob(),mkBlob()],rho=pick([40,60,-40,-60,90,-90]),sc=[.65,.95,1.25],T=(a,c)=>v?{f:Sh[a],s:sc[c]}:{f:Sh[a],rot:c*rho};
+  return{rho,T,ds:[T(2,2),T(2,1),T(2,0),T(1,2),{...T(2,2),m:1}]}});
+ const{rho,T}=r,cell=(a,c,cls)=>fr(T(a,c),cls),all=(h)=>[0,1,2].flatMap(a=>[0,1,2].map(c=>a==2&&c==2?(h?cell(a,c,'hl'):bq()):cell(a,c))).join('');
+ fadd(`<b>Matriks 3×3.</b> Temukan aturan pada baris dan kolom, lalu pilih gambar yang menggantikan tanda tanya!<div class="fmx">${all(0)}</div>`,r.ds,
+  `<div class="fmx">${all(1)}</div><p>Setiap <b>baris</b> memakai satu bentuk yang sama (baris 1, 2, dan 3 masing-masing berbeda). Setiap <b>kolom</b> menentukan ${v?'<b>ukuran</b>: kolom 1 kecil, kolom 2 sedang, kolom 3 besar':`<b>putaran</b>: kolom 1 tidak diputar, kolom 2 diputar ${Math.abs(rho)}° ${rho>0?'searah':'berlawanan arah'} jarum jam, kolom 3 diputar ${2*Math.abs(rho)}°`}.</p><p>Maka sel kosong adalah bentuk baris ke-3 dengan ${v?'ukuran besar':`putaran ${2*Math.abs(rho)}°`}. Pilihan lain memakai bentuk baris lain, kolom yang salah, atau dicerminkan.</p>`)},
+/* G. Beda gambar (bayangan cermin) */
+()=>{const f=mkBlob();
+ const r=gen(()=>{const mi=ri(0,4),rots=shuf([0,70,140,210,280]).map(x=>x+ri(0,30)),ds=rots.map((t,i)=>({f,rot:t,m:i==mi?1:0}));return{mi,ds:[ds[mi],...ds.filter((_,i)=>i!=mi)],all:ds}});
+ const lab=new Map(r.all.map(d=>[fr(d),d.m?'cermin':'diputar']));
+ fadd(`<b>Beda gambar.</b> Empat dari lima gambar adalah gambar yang sama yang hanya <b>diputar</b>. Satu gambar adalah <b>bayangan cermin</b> (dibalik). Pilih gambar yang berbeda!`,r.ds,'');
+ const q=Q.at(-1);q.e=`<div class="eo">${q.o.map((s,i)=>`<div class="${i==q.a?'ok':''}"><b>${L(i)}</b>${s}<small>${lab.get(s)}</small></div>`).join('')}</div><p>Gambar <b>${L(q.a)}</b> adalah bayangan cermin: tonjolan dan cekungannya tersusun dengan urutan berlawanan, sehingga tidak mungkin diperoleh hanya dengan memutar. Empat gambar lainnya identik bila diputar.</p><p>Tips: pilih satu tonjolan yang paling mencolok, lalu telusuri urutan tonjolan di sekelilingnya searah jarum jam pada tiap gambar.</p>`}
+];
+for(let i=0;i<28;i++)FG[i%7]();
+/* ===== 6. FIGURAL MATRIKS (20) – gaya tes psikologi klasik ===== */
+const K='#161616',PD='<defs><pattern id="hs" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#fff"/><path d="M0 3h6" stroke="#161616" stroke-width="2.4"/></pattern><pattern id="vs" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="#fff"/><path d="M3 0v6" stroke="#161616" stroke-width="2.4"/></pattern><pattern id="dt" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#fff"/><circle cx="3.5" cy="3.5" r="1.7" fill="#161616"/></pattern></defs>';
+const FL=[K,'#fff','url(#hs)','url(#dt)','url(#vs)'],SN2=['lingkaran','persegi','segitiga','belah ketupat','tanda tambah'],FN2=['hitam penuh','putih polos','garis mendatar','titik-titik','garis tegak'];
+const shp=(k,z,f,sw=3)=>{const a=`fill="${FL[f]}" stroke="${K}" stroke-width="${sw}" stroke-linejoin="round"`,w=z*.38;
+ const g=k==0?`<circle r="${z}" ${a}/>`:k==1?`<rect x="${-z*.9}" y="${-z*.9}" width="${z*1.8}" height="${z*1.8}" ${a}/>`:k==2?`<polygon points="0,${-z} ${z},${z*.8} ${-z},${z*.8}" ${a}/>`:k==3?`<polygon points="0,${-z*1.1} ${z*1.1},0 0,${z*1.1} ${-z*1.1},0" ${a}/>`:`<polygon points="${[[-w,-z],[w,-z],[w,-w],[z,-w],[z,w],[w,w],[w,z],[-w,z],[-w,w],[-z,w],[-z,-w],[-w,-w]].map(p=>p.join(',')).join(' ')}" ${a}/>`;
+ return(f>=2?PD:'')+g};
+const IN='Perhatikan aturan pada baris dan kolom, lalu pilih gambar yang tepat untuk menggantikan tanda tanya.';
+function mq(t,G,ans,c,e){const wr=[...new Set(c)].filter(x=>x!=ans).slice(0,4);
+ const gr=h=>`<div class="fmx">${G.map((row,r)=>row.map((g,i)=>r==2&&i==2?(h?bx(ans,0,'hl'):bq()):bx(g,0)).join('')).join('')}</div>`;
+ add('Figural Matriks',`<b>${t}</b> ${IN}${gr(0)}`,bx(ans,0),wr.map(x=>bx(x,0)),gr(1)+e)}
+/* --- soal berbasis bit (gabungan, irisan, selisih) --- */
+const pc=m=>{let n=0;while(m){n+=m&1;m>>=1}return n};
+const OPN={xor:'bagian yang <b>berbeda</b> saja (bagian yang sama saling menghapus)',and:'hanya bagian yang <b>sama</b> pada gambar 1 dan 2 (irisan)',diff:'gambar 1 <b>dikurangi</b> gambar 2',or:'<b>gabungan</b> gambar 1 dan gambar 2'};
+function mrows(bits,op,lo,hi){const F=(1<<bits)-1,O={or:(a,b)=>a|b,xor:(a,b)=>a^b,and:(a,b)=>a&b,diff:(a,b)=>a&~b&F},rows=[];
+ for(let g=0;rows.length<3&&g<9000;g++){const A=ri(1,F),B=ri(1,F);if(pc(A)<lo||pc(A)>hi||pc(B)<lo||pc(B)>hi||!(A&B)||!(A&~B&F)||!(B&~A&F)||rows.some(r=>r[0]==A||r[1]==B))continue;rows.push([A,B,O[op](A,B)])}return{rows,O,F}}
+function maskQ(title,bits,op,lo,hi,rd){const{rows,O}=mrows(bits,op,lo,hi),[A,B,C]=rows[2],
+ cands=['or','xor','and','diff'].filter(o=>o!=op).map(o=>O[o](A,B)).concat(shuf(Array.from({length:bits},(_,i)=>C^(1<<i))));
+ mq(title,rows.map(r=>r.map(rd)),rd(C),cands.map(rd),`<p>Pada setiap baris, gambar ke-3 adalah ${OPN[op]}. Terapkan aturan yang sama pada baris ke-3.</p><p>Pilihan lain keliru karena memakai aturan lain (gabungan, irisan, atau selisih) atau ada satu bagian yang salah.</p>`)}
+const qd=m=>{let s=`<circle r="27" fill="#fff" stroke="${K}" stroke-width="3"/>`;for(let q=0;q<4;q++)if(m>>q&1){const a=(q*90-90)*DG,b=a+Math.PI/2,P=(t)=>(27*Math.cos(t)).toFixed(1)+' '+(27*Math.sin(t)).toFixed(1);s+=`<path d="M0 0L${P(a)}A27 27 0 0 1 ${P(b)}Z" fill="${K}"/>`}
+ return s+`<path d="M-27 0h54M0 -27v54" stroke="#8a8a8a" stroke-width="1.2"/><circle r="27" fill="none" stroke="${K}" stroke-width="3"/>`};
+const px=m=>Array.from({length:9},(_,i)=>`<rect x="${-24+(i%3)*17}" y="${-24+((i/3)|0)*17}" width="14" height="14" fill="${m>>i&1?K:'#fff'}" stroke="${K}" stroke-width="1.5"/>`).join('');
+const bar=(rot,sw)=>{rot=((rot%360)+360)%360;return`<g transform="rotate(${rot})"><rect x="-8" y="-27" width="16" height="54" rx="8" fill="#fff" stroke="${K}" stroke-width="3"/><path d="${sw?'M-8 0V19A8 8 0 0 0 8 19V0Z':'M-8 0V-19A8 8 0 0 1 8 -19V0Z'}" fill="${K}" stroke="${K}" stroke-width="3" stroke-linejoin="round"/></g>`};
+const cnt=(k,n)=>Array.from({length:n},(_,i)=>`<g transform="translate(${-20+20*(i%3)} ${-20+20*((i/3)|0)})">${shp(k,6.5,0,1.5)}</g>`).join('');
+const mkPoly=()=>Array.from({length:8},(_,i)=>{const t=(i*45+ri(-14,14))*DG,r=ri(10,27);return[+(r*Math.cos(t)).toFixed(1),+(r*Math.sin(t)).toFixed(1)]});
+const TF={i:p=>p,h:p=>[-p[0],p[1]],v:p=>[p[0],-p[1]],r:p=>[-p[0],-p[1]]},TN={i:'gambar asli',h:'dicerminkan kiri–kanan',v:'dibalik atas–bawah'};
+const pg=(P,t)=>`<polygon points="${P.map(p=>TF[t](p).join(',')).join(' ')}" fill="${K}" stroke="${K}" stroke-width="2" stroke-linejoin="round"/>`;
+const orb=(a,b)=>`<circle r="27" fill="#fff" stroke="#9ca3af" stroke-width="1.5"/>`+Array.from({length:8},(_,p)=>{const t=(p*45-90)*DG;return`<circle cx="${(27*Math.cos(t)).toFixed(1)}" cy="${(27*Math.sin(t)).toFixed(1)}" r="1.6" fill="#9ca3af"/>`}).join('')+[[b,`fill="#fff" stroke="${K}" stroke-width="2.5"`],[a,`fill="${K}"`]].map(([p,s])=>{const t=(((p%8)+8)%8*45-90)*DG;return`<circle cx="${(27*Math.cos(t)).toFixed(1)}" cy="${(27*Math.sin(t)).toFixed(1)}" r="6.5" ${s}/>`}).join('');
+let cQ=0,cP=0,cN=0,cR=0,cC=0,cL=0;
+const FG2=[
+/* 1. Latin: bentuk × isian */
+()=>{const sh=shuf([0,1,2,3,4]).slice(0,3),fl=shuf([0,1,2,3]).slice(0,3),sA=pick([1,2]),fA=3-sA,o=ri(0,2),
+ cell=(r,c)=>[sh[(c+r*sA)%3],fl[(2*c+r*fA+o)%3]],rd=([s,f])=>shp(s,24,f),a=cell(2,2),G=[0,1,2].map(r=>[0,1,2].map(c=>rd(cell(r,c))));
+ const oth=(x,xs)=>xs.filter(y=>y!=x),c=[...oth(a[1],fl).map(f=>[a[0],f]),...oth(a[0],sh).map(s=>[s,a[1]])];
+ mq('Matriks bentuk & isian.',G,rd(a),c.map(rd),`<p>Setiap <b>baris dan kolom</b> memuat tiga bentuk berbeda dan tiga isian berbeda. Pada baris ke-3 sudah ada ${SN2[cell(2,0)[0]]} dan ${SN2[cell(2,1)[0]]}, sehingga bentuk yang tersisa adalah <b>${SN2[a[0]]}</b>. Isian yang sudah ada ${FN2[cell(2,0)[1]]} dan ${FN2[cell(2,1)[1]]}, maka isian yang tersisa adalah <b>${FN2[a[1]]}</b>.</p>`)},
+/* 2. Lingkaran seperempat (bit-op) */
+()=>maskQ('Lingkaran seperempat.',4,['xor','and','diff'][cQ++%3],2,3,qd),
+/* 3. Jumlah gambar */
+()=>{const gs=shuf([0,1,2,3,4]).slice(0,3),d=pick([1,2]),n=(r,c)=>r+1+c*d,v=n(2,2),
+ G=[0,1,2].map(r=>[0,1,2].map(c=>cnt(gs[r],n(r,c))));
+ mq('Jumlah gambar.',G,cnt(gs[2],v),[cnt(gs[2],v-1),cnt(gs[2],v+1),cnt(gs[1],v),cnt(gs[2],v+2),cnt(gs[2],v-2)],`<p>Setiap <b>baris</b> memakai satu jenis gambar yang sama. Pada tiap baris jumlah gambar <b>bertambah ${d}</b> setiap pindah kolom, dan baris berikutnya dimulai dari jumlah yang lebih banyak satu. Baris ke-3 dimulai dari 3, lalu ${3+d}, lalu <b>${v}</b>.</p><p>Pilihan lain keliru pada jumlah atau jenis gambarnya.</p>`)},
+/* 4. Putaran batang */
+()=>{const al=pick([45,-45,90,-90]),be=pick([45,-45,90,-90,135,-135].filter(x=>x!=al&&x!=-al)),R2=(r,c)=>r*al+c*be,a=R2(2,2),
+ G=[0,1,2].map(r=>[0,1,2].map(c=>bar(R2(r,c),0))),dn=x=>(x>0?'searah':'berlawanan arah')+' jarum jam';
+ mq('Putaran batang.',G,bar(a,0),[bar(a+45,0),bar(a-45,0),bar(a+180,0),bar(a,1),bar(a+90,0)],`<p>Batang diputar <b>${Math.abs(be)}° ${dn(be)}</b> setiap pindah kolom, dan setiap pindah baris diputar <b>${Math.abs(al)}° ${dn(al)}</b>. Batang di sel terakhir = 2×${al}° + 2×${be}° = ${2*al+2*be}° dari posisi awal.</p><p>Perhatikan ujung hitam batang sebagai penunjuk arah. Pilihan lain salah arah, salah besar putaran, atau warna ujungnya tertukar.</p>`)},
+/* 5. Kotak-kotak (bit-op) */
+()=>maskQ('Pola kotak.',9,['or','xor','diff'][cP++%3],3,6,px),
+/* 6. Cermin & balik */
+()=>{const P=[0,1,2].map(mkPoly),pm=shuf(['i','h','v']),G=P.map(p=>pm.map(t=>pg(p,t))),t3=pm[2],
+ c=['i','h','v','r'].filter(t=>t!=t3).map(t=>pg(P[2],t)).concat([pg(P[0],t3),pg(P[1],t3)]);
+ mq('Cermin & balik.',G,pg(P[2],t3),c,`<p>Setiap <b>baris</b> memakai satu bentuk. Urutan perubahan pada kolom: kolom 1 = ${TN[pm[0]]}, kolom 2 = ${TN[pm[1]]}, kolom 3 = <b>${TN[pm[2]]}</b>.</p><p>Maka sel kosong adalah bentuk baris ke-3 yang ${TN[t3]}. Pilihan lain memakai perubahan yang salah atau bentuk dari baris lain.</p>`)},
+/* 7. Bentuk bersarang */
+()=>{const ou=shuf([0,1,2,3,4]).slice(0,3),inn=shuf([0,1,2,3,4]).slice(0,3),fx=shuf([0,1,2,3]).slice(0,3),
+ cell=(r,c,o=ou[r],i=inn[c],f=fx[(r+c)%3])=>shp(o,28,1)+shp(i,12,f,2.5),a=cell(2,2),G=[0,1,2].map(r=>[0,1,2].map(c=>cell(r,c))),f2=(2+2)%3;
+ mq('Bentuk bersarang.',G,a,[...[0,1,2].filter(x=>x!=f2).map(x=>cell(2,2,undefined,undefined,fx[x])),cell(2,2,undefined,inn[1]),cell(2,2,ou[1])],`<p>Bentuk <b>luar</b> ditentukan oleh baris (baris ke-3: ${SN2[ou[2]]}), sedangkan bentuk <b>dalam</b> ditentukan oleh kolom (kolom ke-3: ${SN2[inn[2]]}). Isian bentuk dalam berganti mengikuti pola diagonal: ${FN2[fx[0]]} → ${FN2[fx[1]]} → ${FN2[fx[2]]}, lalu berulang. Sel ke-3 baris ke-3 memakai isian <b>${FN2[fx[f2]]}</b>.</p>`)},
+/* 8. Titik mengorbit */
+()=>{let k,a,b,ok;do{k=pick([1,2,3,-1,-2,-3]);a=[ri(0,7),ri(0,7),ri(0,7)];b=[ri(0,7),ri(0,7),ri(0,7)];ok=[0,1,2].every(r=>[0,1,2].every(c=>((a[r]+c*k)%8+8)%8!=((b[r]-c*k)%8+8)%8))}while(!ok);
+ const A=(r,c)=>a[r]+c*k,B=(r,c)=>b[r]-c*k,G=[0,1,2].map(r=>[0,1,2].map(c=>orb(A(r,c),B(r,c)))),x=A(2,2),y=B(2,2),
+ cs=[[x+1,y],[x-1,y],[x,y+1],[x,y-1],[y,x],[x+1,y+1],[x-1,y-1],[x+2,y],[x,y+2]].filter(([p,q])=>((p%8)+8)%8!=((q%8)+8)%8);
+ mq('Titik mengorbit.',G,orb(x,y),cs.map(([p,q])=>orb(p,q)),`<p>Pada setiap pindah kolom, <b>titik hitam</b> bergerak ${Math.abs(k)} posisi ${k>0?'searah':'berlawanan arah'} jarum jam, sedangkan <b>titik putih</b> bergerak ${Math.abs(k)} posisi ke arah <b>sebaliknya</b>. Mulai dari posisi awal pada kolom ke-1 baris ke-3, geser dua kali untuk kolom ke-3.</p><p>Pilihan lain keliru karena salah satu titik bergeser terlalu jauh/kurang, atau kedua titik tertukar.</p>`)}
+];
+for(let i=0;i<20;i++)FG2[i%8]();
+
+/* ===== ENGINE ===== */
+const $=s=>document.querySelector(s),N=Q.length;let st={v:'start',cur:0,ans:Array(N).fill(-1),fl:Array(N).fill(0),t:N*30,ask:0,flt:'all'},tk;
+const cats=[...new Set(Q.map(q=>q.c))];
+function tm(){const e=$('#tm');if(st.v!='test'){e.textContent='';return}const m=Math.floor(st.t/60),s=st.t%60;e.textContent=`⏱ ${String(m).padStart(2,0)}:${String(s).padStart(2,0)}`;e.className=st.t<300?'w':''}
+function render(sc){$('#app').innerHTML=st.v=='start'?startH():st.v=='test'?testH():resH();tm();if(sc)window.scrollTo(0,0)}
+function startH(){return`<div class="card hero"><div style="font-size:48px">🧠</div><h1>Try Out Psikologi Kecerdasan (TIU)</h1><p style="color:var(--mu)">Simulasi Tes Intelegensia Umum tingkat sulit untuk persiapan tes masuk sekolah kedinasan, TNI/Polri, dan seleksi lainnya.</p>
+<div class="chips"><span class="chip">📋 ${N} Soal</span><span class="chip">⏱ ${N*30/60} Menit</span><span class="chip">🎯 Level Sulit</span><span class="chip">💡 Pembahasan Bergambar</span></div>
+<div class="ct">${cats.map(c=>`<div><b>${c}</b><br>${Q.filter(q=>q.c==c).length} soal</div>`).join('')}</div>
+<p style="font-size:14px;color:var(--mu)">Rata-rata waktu hanya 30 detik per soal. Jawab yang pasti dulu, tandai <b>Ragu-ragu</b> untuk soal sulit, lalu kembali di akhir. Paket soal diacak baru setiap halaman dibuka.</p><button class="bt" style="font-size:17px;padding:14px 40px" onclick="start()">Mulai Try Out →</button></div>`}
+function testH(){const n=st.cur,q=Q[n],a=st.ans[n],dn=st.ans.filter(x=>x>=0).length;
+return`<div class="lay"><section class="card"><div class="qh"><span class="tag">${q.c}</span><b class="qn">Soal ${n+1} <small>dari ${N}</small></b></div><div class="bar"><i style="width:${dn/N*100}%"></i></div><div class="pg">Terjawab ${dn} dari ${N} soal</div><div class="qs">${q.q}</div>
+<div class="os${isF(q.o[0])?' f':''}">${q.o.map((o,i)=>`<button class="op${a==i?' on':''}" onclick="pick_(${i})"><em>${L(i)}</em><span>${o}</span></button>`).join('')}</div>
+<p class="hint">⌨️ Keyboard: <kbd>A</kbd>–<kbd>E</kbd> untuk memilih jawaban, <kbd>←</kbd> <kbd>→</kbd> untuk pindah soal.</p>
+<div class="nv"><button class="bt ghost" onclick="mv(-1)" ${n?'':'disabled'}>← Sebelumnya</button><button class="bt ghost${st.fl[n]?' fl':''}" onclick="flag()">🚩 Ragu-ragu</button>${n<N-1?`<button class="bt" onclick="mv(1)">Berikutnya →</button>`:`<button class="bt" onclick="ask(1)">Selesai ✓</button>`}</div></section>
+<aside class="card"><h3>Navigasi Soal</h3><div class="gr">${Q.map((_,i)=>`<button class="${i==n?'cu ':''}${st.ans[i]>=0?'an ':''}${st.fl[i]?'fg2':''}" onclick="jump(${i})">${i+1}</button>`).join('')}</div>
+<p class="lg"><i class="an"></i>Terjawab (${dn}) <i></i>Belum (${N-dn}) <i class="fg2"></i>Ragu</p><button class="bt full" onclick="ask(1)">Selesai &amp; Lihat Pembahasan</button></aside></div>
+${st.ask?`<div class="md"><div class="card"><h3 style="color:var(--r);margin-top:0">Akhiri try out?</h3><p>${N-dn?`Masih ada <b>${N-dn} soal</b> belum dijawab. `:''}Setelah selesai, jawaban tidak bisa diubah.</p><div class="nv" style="justify-content:center"><button class="bt ghost" onclick="ask(0)">Lanjut mengerjakan</button><button class="bt" onclick="finish()">Ya, selesai</button></div></div></div>`:''}`}
+function resH(){let b=0,s=0,k=0;const ct={};cats.forEach(c=>ct[c]=[0,0]);Q.forEach((q,i)=>{const u=st.ans[i];ct[q.c][1]++;if(u<0)k++;else if(u==q.a){b++;ct[q.c][0]++}else s++});
+const sk=Math.round(b/N*100),lv=sk>=80?'Luar biasa! Kemampuan inteligensi umummu sangat baik.':sk>=60?'Baik! Sedikit lagi menuju skor maksimal.':sk>=40?'Cukup. Perdalam materi yang masih lemah.':'Terus berlatih — pelajari pembahasan dengan teliti.';
+const stt=i=>st.ans[i]<0?'k':st.ans[i]==Q[i].a?'b':'s',F=st.flt,tabs=[['all','Semua'],['s','Salah'],['k','Kosong'],['b','Benar']];
+return`<div class="card res"><h2 style="color:var(--r);margin:0">Hasil Try Out</h2><div class="ring" style="background:conic-gradient(var(--r) ${sk*3.6}deg,var(--soft) 0)"><div><b>${sk}</b><small>dari 100</small></div></div><p><b>${lv}</b></p>
+<div class="st"><div><b>${b}</b>Benar</div><div><b>${s}</b>Salah</div><div><b>${k}</b>Kosong</div><div><b>${Math.floor((N*30-st.t)/60)}′</b>Waktu terpakai</div></div>
+<div style="max-width:520px;margin:auto">${cats.map(c=>`<div class="cb"><span><span>${c}</span><span>${ct[c][0]}/${ct[c][1]}</span></span><i><u style="width:${ct[c][0]/ct[c][1]*100}%"></u></i></div>`).join('')}</div>
+<button class="bt ghost" style="margin-top:16px" onclick="location.reload()">↻ Ulangi dengan paket soal baru</button></div>
+<div class="fl2">${tabs.map(([k2,t])=>`<button class="bt${F==k2?'':' ghost'}" onclick="flt('${k2}')">${t}</button>`).join('')}</div>
+${Q.map((q,i)=>({q,i,u:st.ans[i]})).filter(x=>F=='all'||stt(x.i)==F).map(({q,i,u})=>`<article class="card rv"><div class="rh"><b>Soal ${i+1}</b><span class="tag">${q.c}</span><span class="bd ${stt(i)}">${{b:'✓ Benar',s:'✗ Salah',k:'Kosong'}[stt(i)]}</span></div><div class="qs">${q.q}</div>
+<div class="os${isF(q.o[0])?' f':''}">${q.o.map((o,j)=>`<div class="op${j==q.a?' key':''}${j==u&&u!=q.a?' bad':''}"><em>${L(j)}</em><span>${o}</span>${j==q.a?'<b class="mk">✓ Kunci</b>':j==u?'<b class="mk">Jawabanmu</b>':''}</div>`).join('')}</div>
+<div class="ex"><h4>💡 Pembahasan — Jawaban: ${L(q.a)}</h4>${q.e}</div></article>`).join('')||'<p style="text-align:center">Tidak ada soal pada kategori ini.</p>'}`}
+function start(){st.v='test';render(1);tk=setInterval(()=>{st.t--;tm();if(st.t<=0)finish()},1000)}
+function finish(){clearInterval(tk);st.v='res';st.ask=0;render(1)}
+const pick_=i=>{st.ans[st.cur]=i;render()},mv=d=>{st.cur+=d;render(1)},jump=i=>{st.cur=i;render(1)},flag=()=>{st.fl[st.cur]^=1;render()},ask=v=>{st.ask=v;render()},flt=k=>{st.flt=k;render()};
+document.addEventListener('keydown',e=>{if(st.v!='test'||st.ask)return;const k=e.key.toUpperCase();if(k.length==1&&k>='A'&&k<='E'&&Q[st.cur].o[k.charCodeAt(0)-65]!==undefined)pick_(k.charCodeAt(0)-65);else if(e.key=='ArrowRight'&&st.cur<N-1)mv(1);else if(e.key=='ArrowLeft'&&st.cur>0)mv(-1)});
+render();
+</script></body></html>
